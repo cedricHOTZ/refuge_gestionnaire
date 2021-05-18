@@ -1,8 +1,14 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
 
-{% block title %}Connexion{% endblock %}
+    {{ encore_entry_link_tags('login') }}
+{% endblock %}
+
+
 
 {% block body %}
+ 
+    
 <div class="container">
 <form method="post">
     {% if error %}
@@ -13,10 +19,79 @@
         <div class="mb-3">
             You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
         </div>
-    {% endif %}
+    {% endif %}  
+   <div class="section">
+		<div class="container">
+			<div class="row full-height justify-content-center">
+				<div class="col-12 text-center align-self-center py-5">
+					<div class="section pb-5 pt-5 pt-sm-2 text-center">
 
-    <h1 class="h3 mb-5 mt-5 font-weight-normal text-center">Connectez-vous</h1>
-    <div class="row">
+			          	
+						<div class="card-3d-wrap mx-auto">
+							<div class="card-3d-wrapper">
+								<div class="card-front">
+									<div class="center-wrap">
+										<div class="section text-center">
+											<h4 class="mb-4 pb-3">Connectez-vous</h4>
+											<div class="form-group">
+												<input type="email" for="inputEmail"placeholder="Email" value="{{ last_username }}" name="email" id="inputEmail" class="form-style"  autocomplete="off">
+												<i class="input-icon uil uil-at"></i>
+											</div>	
+											<div class="form-group mt-2">
+												<input type="password" for="inputPassword" placeholder="Mot de passe"name="password" id="inputPassword"  class="form-style"  autocomplete="off">
+												<i class="input-icon uil uil-lock-alt"></i>
+											</div>
+                                             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                                             {# Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                                            See https://symfony.com/doc/current/security/remember_me.html #}
+
+                                            <div class="checkbox mb-3 mt-3">
+                                                <label>
+                                                    <input type="checkbox" name="_remember_me"> Se souvenir de moi
+                                                </label>
+                                            </div>
+                                            <button class="btn btn-primary btn-lg mt-4" type="submit"> Valider</button>
+											{# <a href="#" class="btn mt-4">submit</a> #}
+                            				<p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p>
+				      					    
+                                              {# GITHUB #}
+                                            <p>
+                                                <a href="{{path('github_connect')}}">Se connecter avec github</a>
+                                            </p>
+                                          </div>
+			      					</div>
+			      				</div>
+
+								{# <div class="card-back">
+									<div class="center-wrap">
+										<div class="section text-center">
+											<h4 class="mb-4 pb-3">Sign Up</h4>
+											<div class="form-group">
+												<input type="text" name="logname" class="form-style" placeholder="Your Full Name" id="logname" autocomplete="off">
+												<i class="input-icon uil uil-user"></i>
+											</div>	
+											<div class="form-group mt-2">
+												<input type="email" name="logemail" class="form-style" placeholder="Your Email" id="logemail" autocomplete="off">
+												<i class="input-icon uil uil-at"></i>
+											</div>	
+											<div class="form-group mt-2">
+												<input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpass" autocomplete="off">
+												<i class="input-icon uil uil-lock-alt"></i>
+											</div>
+											<a href="#" class="btn mt-4">submit</a>
+				      					</div>
+			      					</div>
+			      				</div> #}
+			      			</div>
+			      		</div>
+			      	</div>
+		      	</div>
+	      	</div>
+	    </div>
+	</div>
+   
+   </form>
+    {# <div class="row">
     <div class="col">
     
     <input type="email" for="inputEmail"placeholder="Email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control mt-3" required autofocus>
@@ -31,12 +106,12 @@
            value="{{ csrf_token('authenticate') }}"
     >
     
-</div>
+</div> #}
     
         {# Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
         See https://symfony.com/doc/current/security/remember_me.html #}
 
-        <div class="checkbox mb-3 mt-3">
+        {# <div class="checkbox mb-3 mt-3">
             <label>
                 <input type="checkbox" name="_remember_me"> Se souvenir de moi
             </label>
@@ -47,9 +122,12 @@
     
         Valider
     </button>
+    <p>
+    <a href="{{path('github_connect')}}">Se connecter avec github</a>
+    </p>
     </div>
 </form>
-</div>
+</div> #}
 </div>
 {% endblock %}
 
