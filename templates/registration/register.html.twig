@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+
+    {{ encore_entry_link_tags('signUp') }}
+{% endblock %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+{{ form_start(registrationForm) }}
+<div class="section">
+		<div class="container">
+			<div class="row full-height justify-content-center">
+				<div class="col-12 text-center align-self-center py-5">
+					<div class="section pb-5 pt-5 pt-sm-2 text-center">
+
+			          	
+						<div class="card-3d-wrap mx-auto">
+							<div class="card-3d-wrapper">
+								<div class="card-front">
+									<div class="center-wrap">
+										<div class="section text-center">
+											<h4 class="mb-4 pb-3">Inscription</h4>
+											<div class="form-group">
+											 {{ form_row(registrationForm.nom,{'label_attr': {'class': 'form-style'}}) }}
+												<i class="input-icon uil uil-at"></i>
+											</div>	
+											<div class="form-group mt-2">
+												{{ form_row(registrationForm.prenom,{'label_attr': {'class': 'form-style'}}) }}
+												<i class="input-icon uil uil-lock-alt"></i>
+											</div>
+												<div class="form-group mt-2">
+												{{ form_row(registrationForm.email,{'label_attr': {'class': 'form-style'}}) }} 
+												<i class="input-icon uil uil-at"></i>
+											</div>
+												<div class="form-group mt-2">
+												 {{ form_row(registrationForm.plainPassword, {
+													 label: 'Password',
+													 label_attr: {'class': 'form-style'}
+													 
+													 }) }}
+												<i class="input-icon uil uil-lock-alt"></i>
+											</div>
+
+													</div>
+												<div class="checkbox mb-3 mt-3">
+											 {{ form_row(registrationForm.agreeTerms) }}
+												
+											</div>
+                                             
+                                             
+                                          <button class="btn btn-primary btn-lg mt-4" type="submit"> Valider</button>
+											{# <a href="#" class="btn mt-4">submit</a> #}
+                            			 {{ form_end(registrationForm) }}	
+                                               
+                                            
+                                          </div>
+			      					</div>
+			      				</div>
+
+								</div>
+			      		</div>
+			      	</div>
+		      	</div>
+	      	</div>
+	    </div>
+	</div>
+   
+   
+
+{# {{ form_start(registrationForm) }}
+<div class="row">
+  <div class="col">
+{{ form_row(registrationForm.nom) }}
+ </div>
+  <div class="col">  
+      {{ form_row(registrationForm.prenom) }}
+</div>
+      </div> 
+
+    <div class="row">
+    <div class="col">
+     {{ form_row(registrationForm.email) }}
+    </div>
+         
+        <div class="col">
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+        </div>
+          
+        
+        </div>
+        <div class="form-group mt-3 mb-2">
+         {{ form_row(registrationForm.agreeTerms) }}
+        </div>
+       
+
+        <button type="submit" class="btn btn-primary mt-1">Valider</button>
+    {{ form_end(registrationForm) }} #}
+
+ 
+  
+{% endblock %}
