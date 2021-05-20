@@ -88,7 +88,11 @@ class UserCrudController extends AbstractCrudController
     }
     public function configureCrud(Crud $crud): Crud
     {
-        return $crud->setDefaultSort(['id' => 'DESC']);
+        return $crud
+            ->setDefaultSort(['id' => 'DESC'])
+            // Affichage des tittres en fonction de la page de User
+            ->setPageTitle('edit','Editer les paramètres')
+            ->setPageTitle('index','Paramètres');
     }
     
     /**
