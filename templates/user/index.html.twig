@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+
+    {{ encore_entry_link_tags('profil') }}
+{% endblock %}
+
+
+{% block title %}Profil de  {{user.fullName}}{% endblock %}
+
+{% block body %}
+
+
+<div class="wrapper">
+  <div class="profile-card js-profile-card">
+    <div class="profile-card__img">
+      <img class="img-fluid rounded-circle mb-"src="https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . ?d="https://www.somewhere.com/homestar.jpg" . urlencode( $default ) . $size; />
+    </div>
+
+    <div class="profile-card__cnt js-profile-cnt">
+      <div class="profile-card__name">{{app.user.fullName}}</div>
+      <div class="profile-card__txt">{{app.user.email}}</strong></div>
+      <div class="profile-card-loc">
+        <span class="profile-card-loc__icon">
+          <svg class="icon"><use xlink:href="#icon-location"></use></svg>
+        </span>
+
+        <span class="profile-card-loc__txt">
+          FRANCE, Strasbourg
+        </span>
+      </div>
+
+      <div class="profile-card-inf">
+        <div class="profile-card-inf__item">
+          <div class="profile-card-inf__title">1598</div>
+          <div class="profile-card-inf__txt">Followers</div>
+        </div>
+
+        <div class="profile-card-inf__item">
+          <div class="profile-card-inf__title">65</div>
+          <div class="profile-card-inf__txt">Following</div>
+        </div>
+
+        <div class="profile-card-inf__item">
+          <div class="profile-card-inf__title">123</div>
+          <div class="profile-card-inf__txt">Articles</div>
+        </div>
+
+        <div class="profile-card-inf__item">
+          <div class="profile-card-inf__title">85</div>
+          <div class="profile-card-inf__txt">Works</div>
+        </div>
+      </div>
+
+<a class="mt-4 btn btn-primary" href="{{path('password_update',{id:user.id})}}">Modifer le mot de passe</a> 
+
+    <div class="profile-card-message js-message">
+      <form class="profile-card-form">
+        <div class="profile-card-form__container">
+          <textarea placeholder="Say something..."></textarea>
+        </div>
+
+      </form>
+
+      
+     
+    </div>
+
+  </div>
+
+
+
+
+
+{% endblock %}
