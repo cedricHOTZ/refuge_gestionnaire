@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block title %}
+{{animal.nom }}
+{% endblock %}
+
+
+{% block body %}
+<div class="row ">
+		<div class="col-md-6 mx-auto ">
+			<article class=" bg-white rounted shadow mt-5  ">
+            <h1 class="text-center">{{animal.nom}}</h1>
+				<div
+					class=" text-center mw-100 overflow-hidden rounted-top">
+					<!-- Si image.name n'est pas null on va prendre l'image en question sinon on prend l'image par default dans le dossié image/placeholder.jpg -->
+					
+						<img src="{{ vich_uploader_asset(animal,'imageFile') | imagine_filter('show')}}" alt="{{animal.nom}}" class=""/>
+					</div>
+					
+
+			
+
+                <p>{{animal.description|raw}}</p>
+				 
+				<p>Arrivé le 
+					{{animal.createdAt|date('d/m/Y') }}</p>
+				<div class="pl-3 pb-3">
+					
+			
+					
+					<a href="{{path('home')}}" class="btn btn-primary">Retour à la page d'accueil</a>
+
+					
+				</div>
+			</article>
+			{% if app.user %}
+			{{ form_start(form) }}
+		
+		 	 {{ form_row(form.contenu) }}
+
+			<input type="text" value={{user}} placeholder="Mot de passe" class="form-style"  autocomplete="off">
+		
+		   {{ form_end(form) }}	
+           {% else %}
+		   Veuillez vous connecter pour ajouter un commentaire
+		   {% endif %}
+		</div>
+		
+{% endblock %}
