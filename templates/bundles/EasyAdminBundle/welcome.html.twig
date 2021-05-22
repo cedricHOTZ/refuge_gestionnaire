@@ -31,6 +31,13 @@
 {% endif %}
 </div>
 <div class="col-6 alert-success">
+<span class="display-3">{{countAllComment['value']}}</span> {% if(countAllComment['value'] > 1 ) %}
+Commentaires
+{% else %}
+Commentaire
+{% endif %}
+</div>
+<div class="col-6 alert-success">
 <span class="display-3">{{countAllAnimaux['value']}}</span> {% if(countAllAnimaux['value'] > 1 ) %}
 Animaux
 {% else %}
