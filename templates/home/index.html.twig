@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+
+{% block body %}
+<section data-jarallax data-speed=".8" class="image-header bg-cover jarallax">
+<img src="{{ asset('/images/uploads/refuge.jpg') | imagine_filter('miniature') }}" class="img-header" />
+
+    {# <img src="images/uploads/refuge.jpg |{{imagine_filter('welcome')}} "class="img-header"> #}
+    <p class="text"><span class="text-header">recueillir,protéger,soigner </span><br/>100 ans au service de la protection des animale.<br/>Une politique zéro euthanasie!!! </p>
+    <button class="btn btn-primary btn-header">Adopter</button>
+</section>
+
+<h2 class="h1 my-5 text-center text-arrivant">Les derniers arrivants</h2>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+
+{% for data in animaux %}
+  <div class="col">
+    <figure class="snip1336">
+      <img src="{{ vich_uploader_asset(data,'imageFile') | imagine_filter('miniature')}}" alt="{{data.nom}}" class=""/>
+      <figcaption>
+    <h2>{{data.nom}}</span></h2>
+    <p>{{data.description|striptags|slice(0,20)}}</p>
+    <a href="{{path('show',{slug:data.slug}) }}" class="info">En savoir plus</a>
+      </figcaption>
+    </figure>
+  </div>
+  {% endfor %}
+ </div>
+
+ 
+        
+{% endblock %}
